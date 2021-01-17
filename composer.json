@@ -1,6 +1,7 @@
 {
     "name": "harbor/monolog-manager",
     "description": "Manages multiple Monolog loggers",
+    "version": "1.0.0",
     "type": "library",
     "license": "MIT",
     "authors": [
