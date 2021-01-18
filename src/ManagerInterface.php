@@ -3,8 +3,9 @@
 namespace Harbor\MonologManager;
 
 use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 
-interface ManagerInterface
+interface ManagerInterface extends LoggerInterface
 {
     /**
      * Adds a new channel to the manager.
@@ -28,13 +29,6 @@ interface ManagerInterface
     public function setDefaultChannel(string $name): ManagerInterface;
 
     /**
-     * Attempts to proxy any invalid method calls to the default channel
-     *
-     * @return mixed
-     */
-    public function __call(string $method, array $parameters);
-
-    /**
      * Configure whether the fallback emergency channel should be used in the event of an
      * error while creating the logger/fetching the channel.
      *
@@ -43,4 +37,11 @@ interface ManagerInterface
      * Default: true
      */
     public function useEmergencyChannel(bool $useEmergencyChannel = true): \Harbor\MonologManager\Manager;
+
+    /**
+     * Attempts to proxy any invalid method calls to the default channel
+     *
+     * @return mixed
+     */
+    public function __call(string $method, array $parameters);
 }

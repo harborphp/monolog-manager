@@ -54,11 +54,11 @@ class Factory
 
     protected function prepareConfigUsingContainer(array $config): array
     {
-        if (is_array($config[LoggerConfig::HANDLERS])) {
+        if (is_array($config[LoggerConfig::HANDLERS] ?? null)) {
             $config[LoggerConfig::HANDLERS] = $this->prepareHandlers($config[LoggerConfig::HANDLERS]);
         }
 
-        if (is_array($config[LoggerConfig::PROCESSORS])) {
+        if (is_array($config[LoggerConfig::PROCESSORS] ?? null)) {
             $config[LoggerConfig::PROCESSORS] = $this->prepareProcessors($config[LoggerConfig::PROCESSORS]);
         }
 

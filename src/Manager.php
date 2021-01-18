@@ -7,13 +7,12 @@ namespace Harbor\MonologManager;
 use InvalidArgumentException;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
-use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 use Throwable;
 
 use function sprintf;
 
-class Manager implements LoggerInterface, ManagerInterface
+class Manager implements ManagerInterface
 {
     public const EMERGENCY_CHANNEL = 'monolog-manager-emergency';
 
