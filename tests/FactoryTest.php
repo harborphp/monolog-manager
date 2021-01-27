@@ -80,6 +80,12 @@ class FactoryTest extends TestCase
                         'name' => ErrorLogHandler::class,
                         'formatter' => new LineFormatter(),
                     ],
+                    [
+                        'name' => ErrorLogHandler::class,
+                        'formatter' => [
+                            'name' => LineFormatter::class,
+                        ],
+                    ],
                 ],
                 'processors' => [
                     PsrLogMessageProcessor::class,
@@ -90,7 +96,7 @@ class FactoryTest extends TestCase
 
         $this->assertSame('logger', $logger->getName());
 
-        $this->assertCount(6, $logger->getHandlers());
+        $this->assertCount(7, $logger->getHandlers());
         $this->assertInstanceOf(NoopHandler::class, $logger->popHandler());
         $this->assertInstanceOf(NullHandler::class, $logger->popHandler());
         $this->assertInstanceOf(NoopHandler::class, $logger->popHandler());

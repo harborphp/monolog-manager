@@ -123,7 +123,7 @@ class Factory
 
         if (!is_array($handler)) {
             $handler = $this->resolveFromContainer($handler);
-        } elseif (isset($handler[HandlerConfig::FORMATTER])) {
+        } elseif (isset($handler[HandlerConfig::FORMATTER]) && ! is_array($handler[HandlerConfig::FORMATTER])) {
             $handler[HandlerConfig::FORMATTER] = $this->resolveFormatter($handler[HandlerConfig::FORMATTER]);
         }
 
